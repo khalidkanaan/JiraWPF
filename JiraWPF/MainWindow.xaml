@@ -1,0 +1,100 @@
+﻿<Window x:Class="JiraWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JiraWPF"
+        xmlns:viewModel="clr-namespace:JiraWPF.MVVM.ViewModel"
+        mc:Ignorable="d"
+        Height="600" Width="920"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+
+    <Border Background="#272537"
+            CornerRadius="20">
+        <Border.Clip>
+            <RectangleGeometry Rect="0,0,920,600" RadiusX="20" RadiusY="20"/>
+        </Border.Clip>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Jira Actions"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Foreground="White"
+                   FontSize="22"
+                   Margin="20,0,0,0">
+            </TextBlock>
+
+            <StackPanel Grid.Row="1">
+                <RadioButton Content="Home"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}" Checked="RadioButton_Checked"
+                             IsChecked="True"
+                             Command="{Binding HomeViewCommand}"/>
+
+                <RadioButton Content="Get All Users"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}" Checked="RadioButton_Checked"
+                             Command="{Binding GetUsersViewCommand}"/>
+
+
+                <RadioButton Content="Jira User Permissions"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Checked="RadioButton_Checked"
+                             Command="{Binding UserPemissionsViewCommand}"/>
+
+                <Border Background="Transparent" Height="325"/>
+
+
+                <RadioButton Content="Settings"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}" Checked="RadioButton_Checked"
+                             Command="{Binding SettingsViewCommand}"/>
+
+
+
+            </StackPanel>
+
+            <TextBox VerticalContentAlignment="Center"
+                     HorizontalAlignment="Left"
+                     Margin="5,18,0,17"
+                     Grid.Column="1"
+                     Width="200"
+                     Height="40"
+                     Tag="Search"
+                     Style="{StaticResource ModernTextBox}" TextChanged="TextBox_TextChanged"/>
+
+
+
+            <ContentControl Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10"
+                            Content="{Binding CurrentView}"/>
+        </Grid>
+
+
+    </Border>
+</Window>
