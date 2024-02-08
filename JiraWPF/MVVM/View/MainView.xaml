@@ -34,12 +34,12 @@
 
                 <Grid>
                     <StackPanel>
-                        <TextBlock Text="World Leader&#x0a;in global finance"
+                        <TextBlock Text="Health Canada&#x0a;Jira WPF Application"
                                    Foreground="White"
                                    FontSize="28"
                                    Margin="20,10,10,0"/>
 
-                        <TextBlock Text="Get started today!"
+                        <TextBlock Text="Simple UI for executing Jira &#x0a;PowerShell scripts and &#x0a;generating CSV data."
                                    Foreground="White"
                                    FontSize="18"
                                    Margin="20,10,10,0"/>
@@ -52,58 +52,55 @@
                            Margin="0,0,-159,-70"/>
                 </Grid>
             </Border>
-
-            <Border Width="200"
-                    Height="200"
-                    CornerRadius="10"
-                    Margin="45,0,0,0">
-
-                <Border.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                        <GradientStop Color="#ffc554" Offset="0.0"/>
-                        <GradientStop Color="#ffb73a" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.Background>
-            </Border>
         </StackPanel>
 
         <StackPanel>
-            <TextBlock Text="Scripts"
+            <TextBlock Text="Instructions"
                    Foreground="White"
                    FontSize="20"
                    HorizontalAlignment="left"
-                   Margin="0,0,0,20"/>
+                   Margin="0,0,0,10"/>
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical">
+                <!--Instructions:
+Before you can run any Jira scripts, please follow these steps:
 
+Update Jira API Token:
+
+Navigate to the Settings tab.
+Enter your Jira API token in the provided text box.
+It is recommended to use an Admin access token for full functionality.
+If a regular token is used, the results obtained from the scripts may be limited.
+Select Jira URI:
+
+Once your API token is updated, select the appropriate Jira URI from the dropdown menu.
+Choose between the production (prod) Jira or staging Jira.-->
                 <StackPanel.Resources>
                     <Style TargetType="{x:Type Border}">
-                        <Setter Property="Margin" Value="15,0,0,0"/>
+                        <Setter Property="Margin" Value="10,0,0,0"/>
                     </Style>
                 </StackPanel.Resources>
-
-                <Border Width="150"
-                        Height="150"
-                        Background="#844eff"
-                        CornerRadius="10"
-                        Margin="0"/>
-
-                <Border Width="150"
-                        Height="150"
-                        Background="#4e99ff"
-                        CornerRadius="10"/>
-
-                <Border Width="150"
-                        Height="150"
-                        Background="#4eff91"
-                        CornerRadius="10"/>
-
-                <Border Width="150"
-                        Height="150"
-                        Background="#ecff4e"
-                        CornerRadius="10"/>
-
-
+                <TextBlock Text="Before you can run any Jira scripts, please follow these steps:"
+                   Foreground="White"
+                   FontSize="16"
+                   HorizontalAlignment="left"
+                   Margin="0,0,0,5"/>
+                <TextBlock Text="• Update Jira URL and API Token in the Settings menu"
+                   Foreground="White"
+                   FontSize="16"
+                   HorizontalAlignment="left"
+                   Margin="20,0,0,5"/>
+                <TextBlock Text="• It is recommended to use an Admin access token for full functionality."
+                   Foreground="White"
+                   FontSize="16"
+                   HorizontalAlignment="left"
+                   Margin="20,0,0,5"/>
+                <TextBlock Text="• If a regular token is used, the results obtained from the scripts may be limited.
+"
+                   Foreground="White"
+                   FontSize="16"
+                   HorizontalAlignment="left"
+                   Margin="20,0,0,5"/>
             </StackPanel>
         </StackPanel>
     </StackPanel>
