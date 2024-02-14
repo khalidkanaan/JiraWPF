@@ -23,6 +23,20 @@ namespace JiraWPF.MVVM.View
         public Settings()
         {
             InitializeComponent();
+            JiraURLTextBox.Text = Properties.Settings.Default.JiraURL;
+            JiraAccessTokenTextBox.Text = Properties.Settings.Default.JiraAccessToken;
+        }
+
+        private void SaveJiraURLButton_Click(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.JiraURL = JiraURLTextBox.Text;
+            Properties.Settings.Default.Save();
+        }
+
+        private void SaveJiraAccessTokenButton_Click(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.JiraAccessToken = JiraAccessTokenTextBox.Text;
+            Properties.Settings.Default.Save();
         }
     }
 }

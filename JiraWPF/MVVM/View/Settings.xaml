@@ -22,16 +22,19 @@
                        Margin="0,0,0,10"/>
 
             <StackPanel Orientation="Horizontal">
-                <TextBox VerticalContentAlignment="Center"
-                     HorizontalAlignment="Left"
-                     Margin="0,10,0,10"
-                     Grid.Column="1"
-                     Width="500"
-                     Height="40"
-                     Tag="Paste Jira URL here."
-                     Style="{StaticResource ModernTextBox}"/>
+                <TextBox x:Name="JiraURLTextBox"
+                         VerticalContentAlignment="Center"
+                         HorizontalAlignment="Left"
+                         Margin="0,10,0,10"
+                         Grid.Column="1"
+                         Width="500"
+                         Height="40"
+                         Tag="Paste Jira URL here."
+                         Style="{StaticResource ModernTextBox}"/>
 
                 <Button Style="{StaticResource ModernButton}"
+                        x:Name="SaveJiraURLButton"
+                        Click="SaveJiraURLButton_Click"
                         Content="Save"
                         Width="80"
                         Height="35"
@@ -48,16 +51,19 @@
                        Margin="0,10,0,10"/>
 
             <StackPanel Orientation="Horizontal">
-                <TextBox VerticalContentAlignment="Center"
-                     HorizontalAlignment="Left"
-                     Margin="0,10,0,10"
-                     Grid.Column="1"
-                     Width="500"
-                     Height="40"
-                     Tag="Paste Jira Access Token here."
-                     Style="{StaticResource ModernTextBox}"/>
+                <TextBox x:Name="JiraAccessTokenTextBox"
+                         VerticalContentAlignment="Center"
+                         HorizontalAlignment="Left"
+                         Margin="0,10,0,10"
+                         Grid.Column="1"
+                         Width="500"
+                         Height="40"
+                         Tag="Paste Jira Access Token here."
+                         Style="{StaticResource ModernTextBox}"/>
 
                 <Button Style="{StaticResource ModernButton}"
+                        x:Name="SaveJiraAccessTokenButton"
+                        Click="SaveJiraAccessTokenButton_Click"
                         Content="Save"
                         Width="80"
                         Height="35"
