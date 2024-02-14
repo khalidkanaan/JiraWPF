@@ -10,7 +10,8 @@
         WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent"
-        AllowsTransparency="True">
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen">
 
     <Window.DataContext>
         <viewModel:MainViewModel/>
@@ -30,6 +31,8 @@
                 <RowDefinition Height="75"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+
+            <Border Background="Transparent" Grid.Row="0" Grid.ColumnSpan="2" MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
 
             <TextBlock Text="Jira Actions"
                    VerticalAlignment="Center"
