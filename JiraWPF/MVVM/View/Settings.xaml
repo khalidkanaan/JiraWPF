@@ -78,13 +78,15 @@
                         Content="Verify Token"
                         Width="110"
                         Height="35"
-                        HorizontalAlignment="Left"/>
+                        HorizontalAlignment="Left"
+                        Click="VerifyTokenButton_Click"/>
 
-                <TextBlock Text="Jira Access Token valid with Admin Privalges ✓"
-                   Foreground="#d6e2fb"
-                   FontSize="15"
-                   HorizontalAlignment="left"
-                   Margin="0,20,0,0"/>
+                <TextBlock Name="TokenStatusTextBlock"
+                           Text=""
+                           Foreground="#d6e2fb"
+                           FontSize="15"
+                           HorizontalAlignment="left"
+                           Margin="0,20,0,0"/>
 
             </StackPanel>
         </StackPanel>
