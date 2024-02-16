@@ -17,27 +17,47 @@ using System.Management.Automation;
 namespace JiraWPF.MVVM.View
 {
     /// <summary>
-    /// Interaction logic for MainView.xaml
+    /// Interaction logic for Settings.xaml
     /// </summary>
     public partial class Settings : UserControl
     {
+        private bool isInitializing = true;
+
         public Settings()
         {
             InitializeComponent();
             JiraURLTextBox.Text = Properties.Settings.Default.JiraURL;
             JiraAccessTokenTextBox.Text = Properties.Settings.Default.JiraAccessToken;
+            isInitializing = false;
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!isInitializing)
+            {
+                if (sender == JiraURLTextBox)
+                {
+                    SaveJiraURLButton.IsEnabled = true;
+                }
+                else if (sender == JiraAccessTokenTextBox)
+                {
+                    SaveJiraAccessTokenButton.IsEnabled = true;
+                }
+            }
         }
 
         private void SaveJiraURLButton_Click(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.JiraURL = JiraURLTextBox.Text;
             Properties.Settings.Default.Save();
+            SaveJiraURLButton.IsEnabled = false;
         }
 
         private void SaveJiraAccessTokenButton_Click(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.JiraAccessToken = JiraAccessTokenTextBox.Text;
             Properties.Settings.Default.Save();
+            SaveJiraAccessTokenButton.IsEnabled = false;
         }
 
         private void VerifyTokenButton_Click(object sender, RoutedEventArgs e)

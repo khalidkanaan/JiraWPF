@@ -23,6 +23,7 @@
 
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="JiraURLTextBox"
+                         TextChanged="TextBox_TextChanged"
                          VerticalContentAlignment="Center"
                          HorizontalAlignment="Left"
                          Margin="0,10,0,10"
@@ -39,7 +40,8 @@
                         Width="80"
                         Height="35"
                         HorizontalAlignment="Left"
-                        Margin="35,0,0,0"/>
+                        Margin="35,0,0,0"
+                        IsEnabled="False"/>
             </StackPanel>
         </StackPanel>
 
@@ -52,6 +54,7 @@
 
             <StackPanel Orientation="Horizontal">
                 <TextBox x:Name="JiraAccessTokenTextBox"
+                         TextChanged="TextBox_TextChanged"
                          VerticalContentAlignment="Center"
                          HorizontalAlignment="Left"
                          Margin="0,10,0,10"
@@ -68,7 +71,8 @@
                         Width="80"
                         Height="35"
                         HorizontalAlignment="Left"
-                        Margin="35,0,0,0"/>
+                        Margin="35,0,0,0"
+                        IsEnabled="False"/>
             </StackPanel>
         </StackPanel>
 
