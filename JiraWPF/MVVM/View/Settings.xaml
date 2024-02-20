@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
              xmlns:local="clr-namespace:JiraWPF.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="460" d:DesignWidth="700">
@@ -85,13 +86,27 @@
                         HorizontalAlignment="Left"
                         Click="VerifyTokenButton_Click"/>
 
-                <TextBlock Name="TokenStatusTextBlock"
+                <Grid>
+                    <TextBlock Name="TokenStatusTextBlock"
                            Text=""
                            Foreground="#d6e2fb"
                            FontSize="15"
                            HorizontalAlignment="left"
                            Margin="0,20,0,0"/>
 
+                    <TextBlock Name="VerifyProgresTextBox"
+                           Text="Checking URL and Token"
+                           Foreground="DodgerBlue"
+                           FontSize="15"
+                           HorizontalAlignment="left"
+                           Margin="0,20,0,0"
+                           Visibility="Hidden"/>
+
+                    <Image Name="LoadingGifImage" 
+                           gif:ImageBehavior.AnimatedSource="/Images/loading.gif" 
+                           Height="30" Margin="167,10,449,0"
+                           Visibility="Hidden"/>
+                </Grid>
             </StackPanel>
         </StackPanel>
     </StackPanel>
