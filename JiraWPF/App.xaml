@@ -7,12 +7,18 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-            
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/TextBoxTheme.xaml"/>
                 <ResourceDictionary Source="Theme/ButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/CheckBoxTheme.xaml"/>
+                <ResourceDictionary Source="Theme/RadioButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ListBoxTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="CheckBox" BasedOn="{StaticResource CheckBoxTheme}"/>
+            <Style TargetType="RadioButton" BasedOn="{StaticResource RadioButtonTheme}"/>
 
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                 <view:MainView/>

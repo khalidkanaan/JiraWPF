@@ -9,6 +9,12 @@ namespace JiraWPF.MVVM.ViewModel
 {
     class GetUsersViewModel : INotifyPropertyChanged
     {
+        public GetUsersViewModel()
+        {
+            Username = true;
+            Email = true;
+        }
+
         private bool _all;
         public bool All
         {
