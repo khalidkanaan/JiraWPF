@@ -87,6 +87,7 @@ namespace JiraWPF.MVVM.View
             }";
 
             // Show loading
+            TokenStatusTextBlock.Text = "";
             TokenStatusTextBlock.Visibility = Visibility.Hidden;
             VerifyProgresTextBox.Visibility = Visibility.Visible;
             LoadingGifImage.Visibility = Visibility.Visible;
@@ -119,14 +120,22 @@ namespace JiraWPF.MVVM.View
                 if (result == "1")
                 {
                     TokenStatusTextBlock.Text = "Jira Access Token valid with Admin Privalges ✓";
+                    TokenStatusTextBlock.Foreground = (Brush)new BrushConverter().ConvertFromString("#d6e2fb");
                 }
                 else if (result == "2")
                 {
-                    TokenStatusTextBlock.Text = "Jira Access Token valid but without Admin Privalges ✓";
+                    TokenStatusTextBlock.Text = "The Jira Access Token provided is valid, but it lacks administrative privileges ⚠\n\n" +
+                                                "Some scripts may be limited in retrieving all Jira data due to access level restrictions imposed by\n" +
+                                                "the token. For comprehensive access, consider using an admin Jira access token.";
+                    TokenStatusTextBlock.Foreground = new SolidColorBrush(Colors.Wheat);
                 }
                 else
                 {
-                    TokenStatusTextBlock.Text = "Jira Access Token is invalid ✘";
+                    TokenStatusTextBlock.Text = "Your Jira Access Token or URL may be invalid ✘\n\n" +
+                                                "Steps to Resolve:\n" +
+                                                "  1. Verify your VPN connection.\n" +
+                                                "  2. Double-check the correctness of your Jira URL or token.";
+                    TokenStatusTextBlock.Foreground = new SolidColorBrush(Colors.LightCoral);
                 }
             }
 
