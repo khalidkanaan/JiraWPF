@@ -96,17 +96,6 @@
 
             </StackPanel>
 
-            <TextBox VerticalContentAlignment="Center"
-                     HorizontalAlignment="Left"
-                     Margin="5,18,0,17"
-                     Grid.Column="1"
-                     Width="200"
-                     Height="40"
-                     Tag="Search"
-                     Style="{StaticResource ModernTextBox}" TextChanged="TextBox_TextChanged"/>
-
-
-
             <ContentControl Grid.Row="1"
                             Grid.Column="1"
                             Margin="10"
