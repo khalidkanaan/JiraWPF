@@ -60,57 +60,85 @@ namespace JiraWPF.MVVM.View
             SaveJiraAccessTokenButton.IsEnabled = false;
         }
 
-        private void VerifyTokenButton_Click(object sender, RoutedEventArgs e)
+        private async void VerifyTokenButton_Click(object sender, RoutedEventArgs e)
         {
-            // Get the values from your settings
+            // Get the values from settings
             string jiraURL = Properties.Settings.Default.JiraURL;
             string jiraToken = Properties.Settings.Default.JiraAccessToken;
 
-            // Call your PowerShell script here
+            // Call PowerShell script
             string script = @"
-                    param($JiraURL, $JiraToken)
-                    $API = '/rest/api/2/myself?expand=groups'
-                    $Header = @{
-                        Authorization = 'Bearer ' + $JiraToken
+            param($JiraURL, $JiraToken)
+            $API = '/rest/api/2/myself?expand=groups'
+            $Header = @{
+                Authorization = 'Bearer ' + $JiraToken
+            }
+            $uri = $JiraURL + $API
+            try {
+                $response = Invoke-RestMethod -Uri $uri -Method Get -Headers $Header -ErrorAction Stop
+                if ($response -ne $null) {
+                    if ($response.groups.items.name -contains 'jira-administrators') {
+                        return '1'  # Valid and admin token
                     }
-                    $uri = $JiraURL + $API
-                    try {
-                        $response = Invoke-RestMethod -Uri $uri -Method Get -Headers $Header -ErrorAction Stop
-                        if ($response -ne $null) {
-                            if ($response.groups.items.name -contains 'jira-administrators') {
-                                return '1'  # Valid and admin token
-                            }
-                            return '2'  # Valid but not admin token
-                        }
-                    } catch {
-                        return '3'  # Invalid token
-                    }";
+                    return '2'  # Valid but not admin token
+                }
+            } catch {
+                return '3'  # Invalid token
+            }";
 
-            using (PowerShell powerShell = PowerShell.Create())
+            // Show loading
+            TokenStatusTextBlock.Text = "";
+            TokenStatusTextBlock.Visibility = Visibility.Hidden;
+            VerifyProgresTextBox.Visibility = Visibility.Visible;
+            LoadingGifImage.Visibility = Visibility.Visible;
+
+            string result = await Task.Run(() =>
             {
-                powerShell.AddScript(script);
-                // Pass the values from your settings to the PowerShell script
-                powerShell.AddParameter("JiraURL", jiraURL);
-                powerShell.AddParameter("JiraToken", jiraToken);
-
-                var results = powerShell.Invoke<string>();
-                if (results.Count > 0)
+                using (PowerShell powerShell = PowerShell.Create())
                 {
-                    string result = results[0];
-                    if (result == "1")
+                    powerShell.AddScript(script);
+                    // Passes the values from our settings to the PowerShell script
+                    powerShell.AddParameter("JiraURL", jiraURL);
+                    powerShell.AddParameter("JiraToken", jiraToken);
+
+                    var results = powerShell.Invoke<string>();
+                    if (results.Count > 0)
                     {
-                        TokenStatusTextBlock.Text = "Jira Access Token valid with Admin Privalges ✓";
+                        return results[0];
                     }
-                    else if (result == "2")
-                    {
-                        TokenStatusTextBlock.Text = "Jira Access Token valid but without Admin Privalges ✓";
-                    }
-                    else
-                    {
-                        TokenStatusTextBlock.Text = "Jira Access Token is invalid ✘";
-                    }
+                    return null;
+                }
+            });
+
+            // Hide the loading
+            VerifyProgresTextBox.Visibility = Visibility.Hidden;
+            LoadingGifImage.Visibility = Visibility.Hidden;
+
+            if (result != null)
+            {
+                TokenStatusTextBlock.Visibility = Visibility.Visible;
+                if (result == "1")
+                {
+                    TokenStatusTextBlock.Text = "Jira Access Token valid with Admin Privalges ✓";
+                    TokenStatusTextBlock.Foreground = (Brush)new BrushConverter().ConvertFromString("#d6e2fb");
+                }
+                else if (result == "2")
+                {
+                    TokenStatusTextBlock.Text = "The Jira Access Token provided is valid, but it lacks administrative privileges ⚠\n\n" +
+                                                "Some scripts may be limited in retrieving all Jira data due to access level restrictions imposed by\n" +
+                                                "the token. For comprehensive access, consider using an admin Jira access token.";
+                    TokenStatusTextBlock.Foreground = new SolidColorBrush(Colors.Wheat);
+                }
+                else
+                {
+                    TokenStatusTextBlock.Text = "Your Jira Access Token or URL may be invalid ✘\n\n" +
+                                                "Steps to Resolve:\n" +
+                                                "  1. Verify your VPN connection.\n" +
+                                                "  2. Double-check the correctness of your Jira URL or token.";
+                    TokenStatusTextBlock.Foreground = new SolidColorBrush(Colors.LightCoral);
                 }
             }
+
         }
 
 
