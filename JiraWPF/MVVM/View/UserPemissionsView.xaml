@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
              xmlns:local="clr-namespace:JiraWPF.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="700">
@@ -31,9 +32,13 @@
                    Foreground="White"
                    FontSize="16"
                    HorizontalAlignment="left"
-                   Margin="20,0,0,5"/>
+                   Margin="20,0,0,20"/>
+
         <StackPanel Orientation="Horizontal">
-            <TextBox VerticalContentAlignment="Center"
+            <TextBox x:Name="JiraUsernameTextBox"
+                     TextChanged="JiraUsernameTextBox_TextChanged"
+                     KeyDown="JiraUsernameTextBox_KeyDown"
+                     VerticalContentAlignment="Center"
                      HorizontalAlignment="Left"
                      Margin="0,10,0,10"
                      Grid.Column="1"
@@ -43,37 +48,70 @@
                      Style="{StaticResource ModernTextBox}"/>
 
             <Button Style="{StaticResource ModernButton}"
-                        Content="Check User"
-                        Width="88"
-                        Height="25"
-                        FontSize="15"
-                        HorizontalAlignment="Left"
-                        Margin="30,0,0,0"/>
+                    x:Name="CheckJiraUsernameButton"
+                    Click="CheckJiraUsernameButton_Click"
+                    Content="Check User"
+                    Width="88"
+                    Height="25"
+                    FontSize="15"
+                    HorizontalAlignment="Left"
+                    IsEnabled="False"
+                    Margin="30,0,0,0"/>
         </StackPanel>
-        <TextBlock Text="Username 'kkanaan' is valid ✓"
+
+        <TextBlock Name="UsernameStatusTextBox"
+                   Text=""
                    Foreground="#d6e2fb"
                    FontSize="15"
-                   HorizontalAlignment="left"
-                   Margin="0,15,0,0"/>
+                   HorizontalAlignment="left"/>
+
+        <Grid>
+            <TextBlock Name="CheckUsernameTextBox"
+                       Text="Checking Jira for user"
+                       Foreground="DodgerBlue"
+                       FontSize="15"
+                       HorizontalAlignment="Left"
+                       Margin="0,-19,0,39"
+                       Visibility="Hidden"/>
+
+            <Image Name="LoadingImageGif" 
+                   gif:ImageBehavior.AnimatedSource="/Images/loading.gif" 
+                   Height="30" Margin="155,-29,461,54"
+                   Visibility="Hidden"/>
+        </Grid>
 
         <Button Style="{StaticResource ModernButton}"
-                        Content="Generate Permissions"
-                        Width="160"
-                        Height="25"
-                        FontSize="15"
-                        HorizontalAlignment="Left"
-                        Margin="0,10,0,15"/>
+                Name="GeneratePermissionsButton"
+                Click="GeneratePermissionsButton_Click"
+                Content="Generate Permissions"
+                Width="160"
+                Height="25"
+                FontSize="15"
+                HorizontalAlignment="Left"
+                IsEnabled="False"
+                Margin="0,-50,0,10"/>
 
-        <TextBlock Text="Terminal Output"
-                   Foreground="White"
-                   FontSize="20"
-                   HorizontalAlignment="left"/>
-        <TextBox Height="130" 
-                 Width="675" 
-                 Background="#1b1b1b" 
-                 Foreground="White"
-                 HorizontalAlignment="Left"
-                 Margin="0,10,0,0"/>
-        <!--#1b1b1b-->
+        <Grid>
+            <TextBlock Name="GenerationStatusTextBlock"
+                       Text=""
+                       Foreground="#d6e2fb"
+                       FontSize="15"
+                       HorizontalAlignment="Left"
+                       Margin="0,-10,0,20"
+                       TextWrapping="Wrap"/>
+
+            <TextBlock Name="GenerateProgressTextBox"
+                       Text="Retrieving permission data from Jira"
+                       Foreground="DodgerBlue"
+                       FontSize="15"
+                       HorizontalAlignment="Left"
+                       Margin="0,-10,0,30"
+                       Visibility="Hidden"/>
+
+            <Image Name="LoadingImageGif1" 
+                   gif:ImageBehavior.AnimatedSource="/Images/loading.gif" 
+                   Height="30" Margin="237,-20,379,30"
+                   Visibility="Hidden"/>
+        </Grid>
     </StackPanel>
 </UserControl>
