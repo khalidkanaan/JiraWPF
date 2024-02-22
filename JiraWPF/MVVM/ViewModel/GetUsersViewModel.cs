@@ -26,10 +26,10 @@ namespace JiraWPF.MVVM.ViewModel
                 }
                 else
                 {
-                    Username = false;
+                    Username = true;
                     FirstName = false;
                     LastName = false;
-                    Email = false;
+                    Email = true;
                 }
             }
         }
