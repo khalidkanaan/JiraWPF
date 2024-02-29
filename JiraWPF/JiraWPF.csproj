@@ -176,5 +176,11 @@
   <ItemGroup>
     <Resource Include="Images\loading.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\reload-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cloud-loading.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

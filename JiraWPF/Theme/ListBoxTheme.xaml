@@ -3,7 +3,7 @@
     <Style x:Key="ListBoxTheme" TargetType="ListBox">
         <Setter Property="Background" Value="#2a2733"/>
         <Setter Property="Foreground" Value="#CFCFCF"/>
-        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontSize" Value="12.5"/>
         <Setter Property="Padding" Value="5"/>
         <Setter Property="Template">
             <Setter.Value>

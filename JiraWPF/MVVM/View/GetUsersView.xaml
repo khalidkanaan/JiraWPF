@@ -4,11 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              Loaded="Window_Loaded"
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
              xmlns:local="clr-namespace:JiraWPF.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="700">
-    
-    
+
+
     <StackPanel>
         <TextBlock Text="Get Jira Users"
                    Foreground="White"
@@ -65,16 +66,55 @@
                          Style="{StaticResource ModernTextBox}"/>
 
                 <ScrollViewer VerticalScrollBarVisibility="Disabled"
+                              HorizontalScrollBarVisibility="Hidden"
                               HorizontalAlignment="Left"
                               Width="130" 
                               Height="75"
                               Margin="0,3,0,0">
 
                     <ListBox Name="GroupListBox"
+                             SelectionChanged="GroupListBox_SelectionChanged"
                              SelectionMode="Multiple"
                              Style="{StaticResource ListBoxTheme}">
                     </ListBox>
                 </ScrollViewer>
+            </StackPanel>
+
+            <StackPanel DockPanel.Dock="Left" Width="30" HorizontalAlignment="Left">
+                <Grid>
+                    <Button Click="GetJiraGroupsButton_Click"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Margin="1,37,0,0"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Cursor="Hand">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <ContentPresenter/>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Image Width="30"
+                               Source="/Images/reload-button.png"/>
+                    </Button>
+
+                    <Image Name="LoadingGifImage"
+                           SnapsToDevicePixels="True"
+                           gif:ImageBehavior.AnimatedSource="/Images/cloud-loading.gif"
+                           Margin="-90,60,70,-80"
+                           Visibility="Hidden"/>
+                </Grid>
             </StackPanel>
         </DockPanel>
 
