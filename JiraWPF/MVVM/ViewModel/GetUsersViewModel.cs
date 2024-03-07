@@ -26,16 +26,16 @@ namespace JiraWPF.MVVM.ViewModel
                 if (_all)
                 {
                     Username = true;
-                    FirstName = true;
-                    LastName = true;
+                    DisplayName = true;
                     Email = true;
+                    Groups = true;
                 }
                 else
                 {
                     Username = true;
-                    FirstName = false;
-                    LastName = false;
+                    DisplayName = false;
                     Email = true;
+                    Groups = false;
                 }
             }
         }
@@ -51,25 +51,25 @@ namespace JiraWPF.MVVM.ViewModel
             }
         }
 
-        private bool _firstName;
-        public bool FirstName
+        private bool _groups;
+        public bool Groups
         {
-            get { return _firstName; }
+            get { return _groups; }
             set
             {
-                _firstName = value;
-                OnPropertyChanged("FirstName");
+                _groups = value;
+                OnPropertyChanged("Groups");
             }
         }
 
-        private bool _lastName;
-        public bool LastName
+        private bool _displayName;
+        public bool DisplayName
         {
-            get { return _lastName; }
+            get { return _displayName; }
             set
             {
-                _lastName = value;
-                OnPropertyChanged("LastName");
+                _displayName = value;
+                OnPropertyChanged("DisplayName");
             }
         }
 
