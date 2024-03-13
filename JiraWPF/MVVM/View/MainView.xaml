@@ -62,19 +62,6 @@
                    Margin="0,0,0,10"/>
 
             <StackPanel Orientation="Vertical">
-                <!--Instructions:
-Before you can run any Jira scripts, please follow these steps:
-
-Update Jira API Token:
-
-Navigate to the Settings tab.
-Enter your Jira API token in the provided text box.
-It is recommended to use an Admin access token for full functionality.
-If a regular token is used, the results obtained from the scripts may be limited.
-Select Jira URI:
-
-Once your API token is updated, select the appropriate Jira URI from the dropdown menu.
-Choose between the production (prod) Jira or staging Jira.-->
                 <StackPanel.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="Margin" Value="10,0,0,0"/>

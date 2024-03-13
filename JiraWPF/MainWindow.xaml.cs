@@ -46,6 +46,10 @@ namespace JiraWPF
             this.Close();
         }
 
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window.GetWindow((DependencyObject)sender).WindowState = WindowState.Minimized;
+        }
 
     }
 }
