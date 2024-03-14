@@ -33,6 +33,10 @@
                 <view:UserPemissionsView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModel:GroupPermissionsViewModel}">
+                <view:GroupPermissionsView/>
+            </DataTemplate>
+
             <DataTemplate DataType="{x:Type viewModel:SettingsViewModel}">
                 <view:Settings/>
             </DataTemplate>

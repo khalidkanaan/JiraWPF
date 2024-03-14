@@ -11,7 +11,8 @@
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Icon="/Images/jira-icon.ico">
 
     <Window.DataContext>
         <viewModel:MainViewModel/>
@@ -79,8 +80,15 @@
                              Checked="RadioButton_Checked"
                              Command="{Binding UserPemissionsViewCommand}"/>
 
-                <Border Background="Transparent" Height="325"/>
+                <RadioButton Content="Jira Group Permissions"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Checked="RadioButton_Checked"
+                             Command="{Binding GroupPemissionsViewCommand}"/>
 
+                <Border Background="Transparent" Height="275"/>
 
                 <RadioButton Content="Settings"
                              Height="50"

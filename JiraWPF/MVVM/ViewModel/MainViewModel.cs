@@ -12,11 +12,13 @@ namespace JiraWPF.MVVM.ViewModel
         public RelayCommand HomeViewCommand { get; set; }
         public RelayCommand GetUsersViewCommand { get; set; }
         public RelayCommand UserPemissionsViewCommand { get; set; }
+        public RelayCommand GroupPemissionsViewCommand { get; set; }
         public RelayCommand SettingsViewCommand { get; set; }
 
         public HomeViewModel HomeVM { get; set; }
         public GetUsersViewModel GetUsersVM { get; set; }
         public UserPermissionsViewModel UserPermissionsVM { get; set; }
+        public GroupPermissionsViewModel GroupPermissionsVM { get; set; }
         public SettingsViewModel SettingsVM { get; set; }
         private object _currentView;
 
@@ -35,6 +37,7 @@ namespace JiraWPF.MVVM.ViewModel
             HomeVM = new HomeViewModel();
             GetUsersVM = new GetUsersViewModel();
             UserPermissionsVM = new UserPermissionsViewModel();
+            GroupPermissionsVM = new GroupPermissionsViewModel();
             SettingsVM = new SettingsViewModel();
 
             CurrentView = HomeVM;
@@ -47,6 +50,11 @@ namespace JiraWPF.MVVM.ViewModel
             UserPemissionsViewCommand = new RelayCommand(o =>
             {
                 CurrentView = UserPermissionsVM;
+            });
+
+            GroupPemissionsViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = GroupPermissionsVM;
             });
 
             GetUsersViewCommand = new RelayCommand(o =>
