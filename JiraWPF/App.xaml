@@ -15,6 +15,7 @@
                 <ResourceDictionary Source="Theme/CheckBoxTheme.xaml"/>
                 <ResourceDictionary Source="Theme/RadioButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/ListBoxTheme.xaml"/>
+                <ResourceDictionary Source="Theme/WindowButtonTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <Style TargetType="CheckBox" BasedOn="{StaticResource CheckBoxTheme}"/>
@@ -30,6 +31,10 @@
 
             <DataTemplate DataType="{x:Type viewModel:UserPermissionsViewModel}">
                 <view:UserPemissionsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:GroupPermissionsViewModel}">
+                <view:GroupPermissionsView/>
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModel:SettingsViewModel}">

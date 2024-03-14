@@ -13,26 +13,19 @@
                    FontSize="28"
                    HorizontalAlignment="left"
                    Margin="0,0,0,20"/>
-        <TextBlock Text="Description: This tool allows you to generate a CSV file of the following information:"
-                   Foreground="White"
-                   FontSize="16"
-                   HorizontalAlignment="left"
-                   Margin="0,0,0,5"/>
-        <TextBlock Text="• List of groups a jira user has been added to"
-                   Foreground="White"
-                   FontSize="16"
-                   HorizontalAlignment="left"
-                   Margin="20,0,0,5"/>
-        <TextBlock Text="• List of projects the user has access to via those groups AND ones they have been individually &#x0a;  added to through users and roles or a custom permission scheme"
-                   Foreground="White"
-                   FontSize="16"
-                   HorizontalAlignment="left"
-                   Margin="20,0,0,5"/>
-        <TextBlock Text="• User role (type of access) when added to the project individually (ex: developer or admin?)"
-                   Foreground="White"
-                   FontSize="16"
-                   HorizontalAlignment="left"
-                   Margin="20,0,0,20"/>
+
+        <TextBlock Foreground="White" FontSize="16" HorizontalAlignment="Left" Margin="5,0,0,20">
+            <Run FontWeight="Bold">Description</Run><LineBreak/>
+            <Run>This tool allows you to generate a CSV file of the following information:</Run><LineBreak/>
+            <TextBlock Margin="15,0,0,5">
+                <Run>• The list of Jira groups the the specified user is a member of.</Run><LineBreak/>
+                <Run>• The list of Jira projects the user has access to via those groups and the type of permissions</Run><LineBreak/>
+                <TextBlock Text="  or group role name they have in each project."/><LineBreak/>
+                <Run>• The list of Jira projects the user has access to via individual role assignment in a project</Run><LineBreak/>
+                <TextBlock Text="  or if added individually to a project's permission scheme."/>
+            </TextBlock>
+           
+        </TextBlock>
 
         <StackPanel Orientation="Horizontal">
             <TextBox x:Name="JiraUsernameTextBox"

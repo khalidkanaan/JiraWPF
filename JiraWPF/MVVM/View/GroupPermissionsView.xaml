@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="JiraWPF.MVVM.View.GetUsersView"
+﻿<UserControl x:Class="JiraWPF.MVVM.View.GroupPermissionsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -11,7 +11,7 @@
 
 
     <StackPanel>
-        <TextBlock Text="Get Jira Users"
+        <TextBlock Text="Jira Group Permissions"
                    Foreground="White"
                    FontSize="28"
                    HorizontalAlignment="left"
@@ -19,43 +19,18 @@
 
         <TextBlock Foreground="White" FontSize="16" HorizontalAlignment="Left" Margin="5,0,0,15">
             <Run FontWeight="Bold">Description</Run><LineBreak/>
-            <Run>This tool allows you to generate a CSV file containing the list of Jira users and their </Run><LineBreak/>
-            <Run>information based on the criteria below.</Run>
+            <Run>This tool allows you to generate a CSV file containing the list of Jira projects the selected Jira</Run><LineBreak/>
+            <Run>group has access to. The script checks the permission scheme and roles for each project and</Run><LineBreak/>
+            <Run>specifies which permission or role the group has in each project.</Run>
         </TextBlock>
-
+        
         <DockPanel>
-            <StackPanel DockPanel.Dock="Left" Margin="0,0,100,0">
-                <TextBlock Text="Data To Retrieve"
-                           Foreground="White"
-                           FontSize="20"
-                           HorizontalAlignment="left"
-                           Margin="0,0,0,10"/>
-
-                <CheckBox Content="All" IsChecked="{Binding All}"/>
-                <CheckBox Content="Username"  IsChecked="{Binding Username}"/>
-                <CheckBox Content="Display Name" IsChecked="{Binding DisplayName}"/>
-                <CheckBox Content="Email" IsChecked="{Binding Email}"/>
-                <CheckBox Content="Groups" IsChecked="{Binding Groups}"/>
-            </StackPanel>
-
-            <StackPanel DockPanel.Dock="Left" Margin="0,0,100,0">
-                <TextBlock Text="Status Filter"
-                           Foreground="White"
-                           FontSize="20"
-                           HorizontalAlignment="left"
-                           Margin="0,0,0,10"/>
-                <RadioButton Name="All" Content="All" Foreground="White" IsChecked="True"/>
-                <RadioButton Name="Active" Content="Active" Foreground="White" />
-                <RadioButton Name="Inactive" Content="Inactive" Foreground="White" />
-            </StackPanel>
-
             <StackPanel DockPanel.Dock="Left">
-                <TextBlock Text="Group Filter"
+                <TextBlock Text="Select Group"
                            Foreground="White"
                            FontSize="20"
                            HorizontalAlignment="left"
                            Margin="0,0,0,10"/>
-
                 <TextBox Name="GroupFilterSearchTextBox"
                          VerticalContentAlignment="Center"
                          HorizontalAlignment="Left"
@@ -72,8 +47,7 @@
                               Margin="0,3,0,0">
 
                     <ListBox Name="GroupListBox"
-                             SelectionChanged="GroupListBox_SelectionChanged"
-                             SelectionMode="Multiple"
+                             SelectionMode="Single"
                              Style="{StaticResource ListBoxTheme}">
                     </ListBox>
                 </ScrollViewer>
@@ -125,7 +99,7 @@
                 FontSize="15"
                 HorizontalAlignment="Left"
                 Margin="0,20,0,5"
-                Click="GetJiraUsers_Click"/>
+                Click="GetPermissionsForGroup_Click"/>
         
         <Grid>
             <TextBlock Name="GenerationStatusTextBlock"
