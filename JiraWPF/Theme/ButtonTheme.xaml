@@ -26,6 +26,9 @@
                             <Setter TargetName="border" Property="Background" Value="Gray"/>
                             <Setter Property="Foreground" Value="LightGray"/>
                         </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Cursor" Value="Hand" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

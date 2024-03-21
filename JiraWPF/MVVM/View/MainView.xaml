@@ -2,7 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
              xmlns:local="clr-namespace:JiraWPF.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="460" d:DesignWidth="700">
@@ -34,12 +35,12 @@
 
                 <Grid>
                     <StackPanel>
-                        <TextBlock Text="Health Canada&#x0a;Jira WPF Application"
+                        <TextBlock Text="Health Canada&#x0a;JiraCSV Genie"
                                    Foreground="White"
                                    FontSize="28"
                                    Margin="20,10,10,0"/>
 
-                        <TextBlock Text="Simple UI for executing Jira &#x0a;PowerShell scripts and &#x0a;generating CSV data."
+                        <TextBlock Text="Simple WPF application &#x0a;for generating CSV data &#x0a;from Jira by executing &#x0a;PowerShell scripts."
                                    Foreground="White"
                                    FontSize="18"
                                    Margin="20,10,10,0"/>
@@ -52,6 +53,10 @@
                            Margin="0,0,-159,-70"/>
                 </Grid>
             </Border>
+            <Image Name="LoadingGifImage"
+                   SnapsToDevicePixels="True"
+                   gif:ImageBehavior.AnimatedSource="/Images/app-genie.gif" Height="206" Width="116"/>
+
         </StackPanel>
 
         <StackPanel>

@@ -56,49 +56,22 @@
             </TextBlock>
 
             <StackPanel Grid.Row="1">
-                <RadioButton Content="Home"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}" Checked="RadioButton_Checked"
-                             IsChecked="True"
-                             Command="{Binding HomeViewCommand}"/>
+                <ListBox Name="SideMenuListBox"
+                         Height="475"
+                         SelectedItem="{Binding SelectedItem}"
+                         Style="{StaticResource SideMenuTheme}"
+                         SelectionChanged="SideMenuListBox_SelectionChanged">
+                    <ListBoxItem Content="Home 🛖" IsSelected="True"/>
+                    <ListBoxItem Content="Get All Users" />
+                    <ListBoxItem Content="Jira User Permissions" />
+                    <ListBoxItem Content="Jira Group Permissions" />
+                </ListBox>
 
-                <RadioButton Content="Get All Users"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}" Checked="RadioButton_Checked"
-                             Command="{Binding GetUsersViewCommand}"/>
-
-
-                <RadioButton Content="Jira User Permissions"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="14"
+                <RadioButton Name="SettingsButton"
+                             Content="Settings 🍁"
                              Style="{StaticResource MenuButtonTheme}"
-                             Checked="RadioButton_Checked"
-                             Command="{Binding UserPemissionsViewCommand}"/>
-
-                <RadioButton Content="Jira Group Permissions"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Checked="RadioButton_Checked"
-                             Command="{Binding GroupPemissionsViewCommand}"/>
-
-                <Border Background="Transparent" Height="275"/>
-
-                <RadioButton Content="Settings"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}" Checked="RadioButton_Checked"
+                             Checked="SettingsButton_Checked"
                              Command="{Binding SettingsViewCommand}"/>
-
-
-
             </StackPanel>
 
             <ContentControl Grid.Row="1"

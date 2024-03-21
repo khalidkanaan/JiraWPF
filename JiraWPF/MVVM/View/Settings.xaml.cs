@@ -53,11 +53,35 @@ namespace JiraWPF.MVVM.View
             SaveJiraURLButton.IsEnabled = false;
         }
 
+        private void SaveJiraURL_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (string.IsNullOrWhiteSpace(JiraURLTextBox.Text))
+                {
+                    return;
+                }
+                SaveJiraURLButton_Click(sender, e);
+            }
+        }
+
         private void SaveJiraAccessTokenButton_Click(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.JiraAccessToken = JiraAccessTokenTextBox.Text;
             Properties.Settings.Default.Save();
             SaveJiraAccessTokenButton.IsEnabled = false;
+        }
+
+        private void SaveJiraAccessToken_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (string.IsNullOrWhiteSpace(JiraAccessTokenTextBox.Text))
+                {
+                    return;
+                }
+                SaveJiraAccessTokenButton_Click(sender, e);
+            }
         }
 
         private async void VerifyTokenButton_Click(object sender, RoutedEventArgs e)

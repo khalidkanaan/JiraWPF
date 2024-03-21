@@ -64,19 +64,13 @@
                          Tag="Search"
                          Style="{StaticResource ModernTextBox}"/>
 
-                <ScrollViewer VerticalScrollBarVisibility="Disabled"
-                              HorizontalScrollBarVisibility="Hidden"
-                              HorizontalAlignment="Left"
-                              Width="130" 
-                              Height="75"
-                              Margin="0,3,0,0">
-
-                    <ListBox Name="GroupListBox"
-                             SelectionChanged="GroupListBox_SelectionChanged"
-                             SelectionMode="Multiple"
-                             Style="{StaticResource ListBoxTheme}">
-                    </ListBox>
-                </ScrollViewer>
+                <ListBox Name="GroupListBox"
+                         Width="130" 
+                         Height="75"
+                         SelectionChanged="GroupListBox_SelectionChanged"
+                         SelectionMode="Multiple"
+                         Style="{StaticResource ListBoxTheme}">
+                </ListBox>
             </StackPanel>
 
             <StackPanel DockPanel.Dock="Left" Width="30" HorizontalAlignment="Left">
