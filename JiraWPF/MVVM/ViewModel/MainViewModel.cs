@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace JiraWPF.MVVM.ViewModel
 {
@@ -29,6 +30,43 @@ namespace JiraWPF.MVVM.ViewModel
             { 
                 _currentView = value;
                 OnPropertyChanged();
+            }
+        }
+
+        private void ExecuteCommandBasedOnSelection(object selectedItem)
+        {
+            var listBoxItem = selectedItem as ListBoxItem;
+            if (listBoxItem == null) return;
+            var content = listBoxItem.Content.ToString();
+
+            switch (content)
+            {
+                case "Home 🛖":
+                    HomeViewCommand.Execute(null);
+                    break;
+                case "Get All Users":
+                    GetUsersViewCommand.Execute(null);
+                    break;
+                case "Jira User Permissions":
+                    UserPemissionsViewCommand.Execute(null);
+                    break;
+                case "Jira Group Permissions":
+                    GroupPemissionsViewCommand.Execute(null);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private object _selectedItem;
+        public object SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                _selectedItem = value;
+                OnPropertyChanged();
+                ExecuteCommandBasedOnSelection(value);
             }
         }
 

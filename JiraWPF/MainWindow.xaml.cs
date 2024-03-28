@@ -25,9 +25,20 @@ namespace JiraWPF
             InitializeComponent();
         }
 
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        private void SettingsButton_Checked(object sender, RoutedEventArgs e)
         {
+            SideMenuListBox.SelectedItem = null;
+        }
 
+        private void SideMenuListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (SideMenuListBox.SelectedItem != null)
+            {
+                if (SettingsButton != null)
+                {
+                    SettingsButton.IsChecked = false;
+                }
+            }
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

@@ -9,7 +9,9 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ListBox">
                     <Border Background="{TemplateBinding Background}" CornerRadius="5">
-                        <ScrollViewer>
+                        <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                                      VerticalScrollBarVisibility="Disabled"
+                                      CanContentScroll="True">
                             <ItemsPresenter/>
                         </ScrollViewer>
                     </Border>
@@ -21,15 +23,19 @@
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Padding" Value="10"/>
                     <Setter Property="Margin" Value="0,2,0,0"/>
-                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
                     <Setter Property="VerticalAlignment" Value="Center"/>
                     <Setter Property="HorizontalContentAlignment" Value="Center"/>
                     <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="Height" Value="17"/>
+                    <Setter Property="Width" Value="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ListBox}}"/>
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="ListBoxItem">
                                 <Border Background="{TemplateBinding Background}" CornerRadius="5">
-                                    <ContentPresenter HorizontalAlignment="Center"/>
+                                    <Viewbox>
+                                        <ContentPresenter/>
+                                    </Viewbox>
                                 </Border>
                             </ControlTemplate>
                         </Setter.Value>
