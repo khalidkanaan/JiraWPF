@@ -61,7 +61,7 @@
                          SelectedItem="{Binding SelectedItem}"
                          Style="{StaticResource SideMenuTheme}"
                          SelectionChanged="SideMenuListBox_SelectionChanged">
-                    <ListBoxItem Content="Home 🛖" IsSelected="True"/>
+                    <ListBoxItem Content="Home" IsSelected="True"/>
                     <ListBoxItem Content="Get All Users" />
                     <ListBoxItem Content="Jira User Permissions" />
                     <ListBoxItem Content="Jira Group Permissions" />

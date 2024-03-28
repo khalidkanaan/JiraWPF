@@ -111,6 +111,8 @@ namespace JiraWPF.MVVM.View
             }";
 
             // Show loading
+            GroupRefreshStatusTextBlock.Text = "";
+            RefreshFailedTextBlock.Visibility = Visibility.Hidden;
             LoadingGifImage.Visibility = Visibility.Visible;
 
             string result = await Task.Run(() =>
@@ -145,6 +147,10 @@ namespace JiraWPF.MVVM.View
                     // add "None" option at the start of the list
                     stringCollection.Insert(0, "None");
 
+                    // Get how many Jira groups were added
+                    int existingGroupCount = Properties.Settings.Default.JiraGroups.Count;
+                    int numGroupsAdded = stringCollection.Count - existingGroupCount;
+
                     // store the StringCollection in settings.settings
                     Properties.Settings.Default.JiraGroups = stringCollection;
                     Properties.Settings.Default.Save();
@@ -153,14 +159,18 @@ namespace JiraWPF.MVVM.View
                     var collectionView = CollectionViewSource.GetDefaultView(stringCollection);
                     GroupListBox.ItemsSource = collectionView;
 
+                    GroupRefreshStatusTextBlock.Foreground = new SolidColorBrush(Colors.DodgerBlue);
+                    GroupRefreshStatusTextBlock.Inlines.Add($"Jira groups refreshed!\n{numGroupsAdded} new group(s) added.");
+
                     Window_Loaded(sender, e);
                 }
                 else
                 {
-                    MessageBox.Show("Could not retrieve Jira Groups\n\n" +
-                                    "  1. Verify your VPN connection.\n" +
-                                    "  2. Double-check the correctness of your Jira URL or token\n" +
-                                    "      in the Settings.", "Connection Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    RefreshFailedTextBlock.Visibility = Visibility.Visible;
+                    GroupRefreshStatusTextBlock.Foreground = new SolidColorBrush(Colors.LightCoral);
+                    GroupRefreshStatusTextBlock.Inlines.Add("1. Verify your VPN connection.\n" +
+                                                            "2. Update Jira URL and Token in\n" +
+                                                            "    the Settings.");
                 }
             }
 
@@ -314,7 +324,7 @@ namespace JiraWPF.MVVM.View
                     if ($all -or $emailAddressCheckBox) { $columns += 'emailAddress' }
                     if ($all -or $groupsCheckBox) { $columns += 'groups' }
 
-                    $folderPath = 'jira_users'
+                    $folderPath = 'generated_data\jira_users'
                     if (-not (Test-Path $folderPath)) {
                         New-Item -ItemType Directory -Path $folderPath -ErrorAction Stop | Out-Null
                     }

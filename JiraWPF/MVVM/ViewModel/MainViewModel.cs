@@ -41,7 +41,7 @@ namespace JiraWPF.MVVM.ViewModel
 
             switch (content)
             {
-                case "Home 🛖":
+                case "Home":
                     HomeViewCommand.Execute(null);
                     break;
                 case "Get All Users":

@@ -23,7 +23,7 @@
             <Run>group has access to. The script checks the permission scheme and roles for each project and</Run><LineBreak/>
             <Run>specifies which permission or role the group has in each project.</Run>
         </TextBlock>
-        
+
         <DockPanel>
             <StackPanel DockPanel.Dock="Left">
                 <TextBlock Text="Select Group"
@@ -79,11 +79,27 @@
                     <Image Name="LoadingGifImage"
                            SnapsToDevicePixels="True"
                            gif:ImageBehavior.AnimatedSource="/Images/cloud-loading.gif"
-                           Margin="-90,60,70,-80"
+                           Margin="-90,35,70,-55"
                            Visibility="Hidden"/>
+
+                    <TextBlock Name="RefreshFailedTextBlock"
+                       Text="Could not update Jira Groups! 🚫"
+                       Width="120"
+                       Foreground="LightCoral"
+                       FontSize="15"
+                       HorizontalAlignment="Left"
+                       Margin="-125,84,0,-5"
+                       TextAlignment="Center"
+                       Visibility="Hidden"
+                       TextWrapping="Wrap"/>
                 </Grid>
             </StackPanel>
         </DockPanel>
+
+        <TextBlock Name="GroupRefreshStatusTextBlock"
+                       Text=""
+                       FontSize="14"
+                       TextWrapping="Wrap" Margin="0,0,0,-15"/>
 
         <Button Name="RetrieveDataButton"
                 Style="{StaticResource ModernButton}"
@@ -94,7 +110,7 @@
                 HorizontalAlignment="Left"
                 Margin="0,20,0,5"
                 Click="GetPermissionsForGroup_Click"/>
-        
+
         <Grid>
             <TextBlock Name="GenerationStatusTextBlock"
                        Text=""
