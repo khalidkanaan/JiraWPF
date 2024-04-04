@@ -68,4 +68,4 @@ To start using JiraCSV Genie, follow these steps:
 
 ## Support
 
-For any assistance or inquiries, please contact [khalid.kanaan.ca@gmail.com](mailto:khalid.kanaan.ca@gmail.com).
+For any assistance or inquiries, please contact [devops@hc-sc.gc.ca](mailto:devops@hc-sc.gc.ca).
