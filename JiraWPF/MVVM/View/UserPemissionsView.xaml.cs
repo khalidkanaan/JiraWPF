@@ -289,7 +289,7 @@ namespace JiraWPF.MVVM.View
                     # Remove the last $shift number of rows from the $data array
                     $data = $data[0..($data.Count-$shift-1)]
 
-                    $folderPath = 'jira_user_access\' + $targetUsername
+                    $folderPath = 'generated_data\jira_user_access\' + $targetUsername
                     if (-not (Test-Path $folderPath)) {
                         New-Item -ItemType Directory -Path $folderPath -ErrorAction Stop | Out-Null
                     }

@@ -105,8 +105,25 @@
                     <Image Name="LoadingGifImage"
                            SnapsToDevicePixels="True"
                            gif:ImageBehavior.AnimatedSource="/Images/cloud-loading.gif"
-                           Margin="-90,60,70,-80"
+                           Margin="-90,35,70,-55"
                            Visibility="Hidden"/>
+
+                    <TextBlock Name="RefreshFailedTextBlock"
+                       Text="Could not update Jira Groups! 🚫"
+                       Width="120"
+                       Foreground="LightCoral"
+                       FontSize="15"
+                       HorizontalAlignment="Left"
+                       Margin="-125,84,0,-5"
+                       TextAlignment="Center"
+                       Visibility="Hidden"
+                       TextWrapping="Wrap"/>
+
+                    <TextBlock Name="GroupRefreshStatusTextBlock"
+                       Text=""
+                       FontSize="14"
+                       Margin="-130,148,-58,-86"
+                       TextWrapping="Wrap"/>
                 </Grid>
             </StackPanel>
         </DockPanel>
@@ -120,7 +137,7 @@
                 HorizontalAlignment="Left"
                 Margin="0,20,0,5"
                 Click="GetJiraUsers_Click"/>
-        
+
         <Grid>
             <TextBlock Name="GenerationStatusTextBlock"
                        Text=""
